@@ -1,0 +1,49 @@
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Social Media</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Social Media</h1>
+    <?php if (isset($_SESSION['username'])) : ?>
+      <p>Welcome, <?php echo $_SESSION['username']; ?></p>
+      <a href="logout.php">Logout</a>
+    <?php endif; ?>
+  </header>
+
+  <?php if (isset($_SESSION['username'])) : ?>
+    <!-- Post form and feed -->
+    <div class="post-form">
+      <h2>Create a Post</h2>
+      <form action="post.php" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <textarea name="caption" placeholder="Write a caption..." required></textarea>
+        <button type="submit">Post</button>
+      </form>
+    </div>
+
+    <div class="post-feed">
+      <!-- Display posts with comments and likes -->
+      <!-- Fetch posts from the database using PHP and display them here -->
+    </div>
+  <?php else : ?>
+    <!-- Login form -->
+    <div class="login-form">
+      <h2>Login</h2>
+      <form action="login.php" method="POST">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  <?php endif; ?>
+
+  <script src="script.js"></script>
+</body>
+</html>

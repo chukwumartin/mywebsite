@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Social Media Login/Signup</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      background-color: #f4f4f4;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    label, input {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <label for="loginEmail">Email:</label>
+      <input type="email" id="loginEmail" required>
+
+      <label for="loginPassword">Password:</label>
+      <input type="password" id="loginPassword" required>
+
+      <input type="submit" value="Login">
+    </form>
+
+    <h2>Signup</h2>
+    <form id="signupForm">
+      <label for="signupEmail">Email:</label>
+      <input type="email" id="signupEmail" required>
+
+      <label for="signupPassword">Password:</label>
+      <input type="password" id="signupPassword" required>
+
+      <label for="signupConfirmPassword">Confirm Password:</label>
+      <input type="password" id="signupConfirmPassword" required>
+
+      <input type="submit" value="Signup">
+    </form>
+  </div>
+
+  <script>
+    // Add event listeners to the login and signup forms
+    document.getElementById("loginForm").addEventListener("submit", handleLoginFormSubmit);
+    document.getElementById("signupForm").addEventListener("submit", handleSignupFormSubmit);
+
+    function handleLoginFormSubmit(event) {
+      event.preventDefault();
+
+      // Get the values from the login form
+      var email = document.getElementById("loginEmail").value;
+      var password = document.getElementById("loginPassword").value;
+
+      // Perform login logic here (e.g., validate credentials, authenticate user)
+      // Replace the alert with your actual logic
+      alert("Login successful!");
+    }
+
+    function handleSignupFormSubmit(event) {
+      event.preventDefault();
+
+      // Get the values from the signup form
+      var email = document.getElementById("signupEmail").value;
+      var password = document.getElementById("signupPassword").value;
+      var confirmPassword = document.getElementById("signupConfirmPassword").value;
+
+      // Perform signup logic here (e.g., validate inputs, create user account)
+      // Replace the alert with your actual logic
+      alert("Signup successful!");
+    }
+  </script>
+</body>
+</html>

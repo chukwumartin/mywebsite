@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Social Media Homepage</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .post {
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .post-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .post-header img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .post-header h3 {
+      margin: 0;
+    }
+
+    .post-image {
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .post-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .post-actions button {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .post-actions button i {
+      margin-right: 5px;
+    }
+
+    .post-comments {
+      margin-top: 10px;
+    }
+
+    .post-comments p {
+      margin: 0;
+    }
+
+    .comment-form {
+      margin-top: 10px;
+    }
+
+    .comment-form input[type="text"] {
+      width: 100%;
+      padding: 5px;
+    }
+
+    .comment-form input[type="submit"] {
+      padding: 5px 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="post">
+      <div class="post-header">
+        <img src="profile_picture.jpg" alt="Profile Picture">
+        <h3>User Name</h3>
+      </div>
+      <img class="post-image" src="post_image.jpg" alt="Post Image">
+      <div class="post-actions">
+        <button onclick="likePost(this)"><i class="far fa-thumbs-up"></i>Like</button>
+        <button onclick="toggleComments(this)"><i class="far fa-comment"></i>Comment</button>
+      </div>
+      <div class="post-comments">
+        <p><strong>User1:</strong> This is an amazing picture!</p>
+        <p><strong>User2:</strong> I love it too!</p>
+      </div>
+      <form class="comment-form" onsubmit="submitComment(event)">
+        <input type="text" placeholder="Write a comment...">
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script>
+    function likePost(button) {
+      var icon = button.querySelector('i');
+      var text = button.firstChild;
+      if (icon.classList.contains('far')) {
+        icon.classList.remove('far');
+        icon.classList.add('fas');
+        text.textContent = 'Liked';
+      } else {
+        icon.classList.remove('fas');
+        icon.classList.add('far');
+        text.textContent = 'Like';
+      }
+    }
+
+    function toggleComments(button) {
+      var comments = button.parentNode.parentNode.querySelector('.post-comments');
+      comments.classList.toggle('hidden');
+    }
+
+    function submitComment(event) {
+      event.preventDefault();
+      var input = event.target.querySelector('input[type="text"]');
+      var comment = input.value;
+      input.value = '';
+
+      var postComments = event.target.parentNode.querySelector('.post-comments');
+      var newComment = document.createElement('p');
+      newComment.innerHTML = '<strong>Your Name:</strong> ' + comment;
+      postComments.appendChild(newComment);
+    }
+  </script>
+</body>
+</html>

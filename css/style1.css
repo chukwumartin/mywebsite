@@ -1,0 +1,56 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  header {
+    background-color: #4267B2;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h1, h2 {
+    margin-bottom: 10px;
+  }
+  
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .post-form {
+    margin-bottom: 20px;
+  }
+  
+  .post-form input[type="file"],
+  .post-form textarea,
+  .post-form button {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .post-feed {
+    /* Style the post feed */
+  }
+  
+  .login-form {
+    margin: 0 auto;
+    max-width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+  }
+  
+  .login-form input[type="text"],
+  .login-form input[type="password"],
+  .login-form button {
+    display: block;
+    margin-bottom: 10px;
+  }
+  

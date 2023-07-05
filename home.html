@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>social Template</title>
+  <script src="https://kit.fontawesome.com/fafe3b7e35.js" crossorigin="anonymous"></script>
+  <style>
+    /* Reset CSS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    /* Header */
+    header {
+      background-color: #4267B2;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Main Content */
+    main {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .left-column,
+    .middle-column,
+    .right-column {
+      flex: 1;
+      padding: 10px;
+    }
+
+    .left-column {
+      order: 1;
+    }
+
+    .middle-column {
+      order: 2;
+    }
+
+    .right-column {
+      order: 3;
+    }
+
+    .like-button,
+    .share-button {
+      display: inline-block;
+      padding: 10px;
+      color: #4267B2;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>my socials account</h1>
+  </header>
+
+  <main>
+    <div class="left-column">
+      <h2>Left Column</h2>
+      <img src="images/Hb461033a5693425a862d38e89dbe88b33.jpg_300x300.webp" alt="">
+      <p>This is the left column.</p>
+      <div class="like-button">
+        <i class="fas fa-thumbs-up"></i> Like
+      </div>
+      <div class="share-button">
+        <i class="fas fa-share"></i> Share
+      </div>
+    </div>
+
+    <div class="middle-column">
+      <h2>Middle Column</h2>
+      <img src="images/He26425d53161478baa6402a6f33e0b03A.jpg_300x300.webp" alt="Middle Column Image">
+      <p>This is the middle column.</p>
+      <div class="like-button">
+        <i class="fa-solid fa-thumbs-up"></i> Like
+      </div>
+      <div class="share-button">
+        <i class="fas fa-share"></i> Share
+      </div>
+    </div>
+
+    <div class="right-column">
+      <h2>Right Column</h2>
+      <img src="images/HTB1cBLtaEvrK1RjSszfq6xJNVXaW.jpg_300x300.webp" alt="Right Column Image">
+      <p>This is the right column.</p>
+      <div class="like-button">
+        <i class="fas fa-thumbs-up"></i> Like
+      </div>
+      <div class="share-button">
+        <i class="fas fa-share"></i> Share
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 my socials</p>
+  </footer>
+</body>
+</html>
+

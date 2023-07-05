@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Social Media Homepage</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      background-color: #f4f4f4;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .post {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+    }
+
+    .post img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+    }
+
+    .post .actions {
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .post .actions button {
+      margin-right: 5px;
+      padding: 5px 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .comments {
+      margin-top: 10px;
+    }
+
+    .comments .comment {
+      margin-bottom: 10px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>My Social Media</h2>
+
+    <div id="postForm">
+      <h3>Create a Post</h3>
+      <input type="file" id="postImage" accept="image/*">
+      <button onclick="createPost()">Post</button>
+    </div>
+
+    <div id="postsContainer">
+      <!-- Posts will be dynamically added here -->
+    </div>
+  </div>
+
+  <script>
+    var posts = []; // Array to store posts
+
+    function createPost() {
+      var fileInput = document.getElementById("postImage");
+      var file = fileInput.files[0];
+
+      if (file) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          var post = {
+            image: e.target.result,
+            likes: 0,
+            comments: []
+          };
+
+          posts.push(post);
+          renderPosts();
+        };
+        reader.readAsDataURL(file);
+      }
+
+      fileInput.value = ""; // Clear the file input
+    }
+
+    function renderPosts() {
+      var postsContainer = document.getElementById("postsContainer");
+      postsContainer.innerHTML = ""; // Clear previous posts
+
+      for (var i = 0; i < posts.length; i++) {
+        var post = posts[i];
+
+        var postElement = document.createElement("div");
+        postElement.className = "post";
+
+        var imageElement = document.createElement("img");
+        imageElement.src = post.image;
+        postElement.appendChild(imageElement);
+
+        var actionsElement = document.createElement("div");
+        actionsElement.className = "actions";
+        var likeButton = document.createElement("button");
+        likeButton.innerHTML = "Like";
+        likeButton.addEventListener("click", (function(index) {
+          return function() {
+            likePost(index);
+          };
+        })(i));
+        actionsElement.appendChild(likeButton);
+
+        var commentButton = document.createElement("button");
+        commentButton.innerHTML = "Comment";
+        commentButton.addEventListener("click", (function(index) {
+          return function() {
+            showCommentForm(index);
+          };
+        })(i));
+        actionsElement.appendChild(commentButton);
+
+        postElement.appendChild(actionsElement);
+
+        var commentsElement = document.createElement("div");
+        commentsElement.className = "comments";
+        for (var j = 0; j < post.comments.length; j++) {
+          var comment = post.comments[j];
+          var commentElement = document.createElement("div");
+          commentElement.className = "comment";
+          commentElement.innerHTML = comment;
+          commentsElement.appendChild(commentElement);
+        }
+        postElement.appendChild(commentsElement);
+
+        postsContainer.appendChild(postElement);
+      }
+    }
+
+    function likePost(index) {
+      var post = posts[index];
+      post.likes++;
+      renderPosts();
+    }
+
+    function showCommentForm(index) {
+      var post = posts[index];
+      var comment = prompt("Enter your comment:");
+
+      if (comment) {
+        post.comments.push(comment);
+        renderPosts();
+      }
+    }
+  </script>
+</body>
+</html>
